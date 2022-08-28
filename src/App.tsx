@@ -1,12 +1,18 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
-import { useGetPopularQuery } from './api/movie.api'
+import { Home } from './pages/Home/Home'
 function App() {
-  const { data, error, isLoading } = useGetPopularQuery(1)
-  console.log(data)
   return (
     <div className='App'>
       <Header />
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   )
 }
