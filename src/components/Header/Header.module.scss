@@ -1,0 +1,21 @@
+.header {
+  background-color: rgb(17, 17, 17);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: rgb(194, 194, 194);
+  svg {
+    font-size: 1.6em;
+  }
+}
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 1em;
+}
+.left {
+  position: relative;
+}
