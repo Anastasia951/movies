@@ -11,7 +11,13 @@ export const movieApi = createApi({
       query: (page = 1) =>
         `/movie/popular?page=${page}&api_key=${process.env.REACT_APP_API_KEY}`,
     }),
+    getNewest: builder.query<IGetMoviesByField, number>({
+      query: (page = 1) =>
+        `/search/movie?api_key=${
+          process.env.REACT_APP_API_KEY
+        }&query=${'dead'}&page=${page}&include_adult=false`,
+    }),
   }),
 })
 
-export const { useGetPopularQuery } = movieApi
+export const { useGetPopularQuery, useGetNewestQuery } = movieApi

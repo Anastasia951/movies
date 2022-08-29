@@ -4,6 +4,7 @@ import { Title } from '../../ui/Title/Title'
 import cn from 'classnames'
 import styles from './FilItem.module.scss'
 import { getYear } from '../../utils/getYear'
+import { FilmRating } from './FilmRating/FilmRating'
 
 interface IFilmItemProps {
   film: IFilm
@@ -11,27 +12,19 @@ interface IFilmItemProps {
 
 export const FilmItem = ({ film }: IFilmItemProps) => {
   const { year } = getYear(film.release_date)
-  // const promises = film.genre_ids.map(id =>
-  //   fetch(
-  //     `${process.env.REACT_APP_API_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
-  //   )
-  // )
-  // if (film.genre_ids.length) {
-  //   //https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
-  //   Promise.all(promises)
-  //     .then(results => Promise.all(results.map(res => res.json())))
-  //     .then(results => console.log(results))
-  // }
   return (
     <div className={cn(styles.filmItem)}>
       <div className={cn('imageWrapper', styles.imageWrapper)}>
         <img
-          src={`${process.env.REACT_APP_IMAGES_URL}/w500${film.poster_path}`}
+          src={`${process.env.REACT_APP_IMAGES_URL}${film.poster_path}`}
           alt={film.title}
         />
       </div>
-      <Title variant='h3'>{film.title}</Title>
-      <p>{year}</p>
+      <Title variant='h3' className={cn(styles.title)}>
+        {film.title}
+      </Title>
+      <p className={cn(styles.year)}>{year}</p>
+      <FilmRating vote_average={film.vote_average} />
     </div>
   )
 }

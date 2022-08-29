@@ -3,3 +3,19 @@
   height: 0;
   padding-bottom: 150%;
 }
+.filmItem {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  &:hover {
+    filter: brightness(80%);
+    transform: translateY(-5px);
+  }
+}
+
+.title {
+  margin-top: 0.5em;
+}
+.year {
+  color: #888;
+}

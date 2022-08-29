@@ -9,14 +9,19 @@ import { ButtonBase } from '../../ui/ButtonBase/ButtonBase'
 import styles from './PopularFilms.module.scss'
 import cn from 'classnames'
 import { Grid } from '../../ui/Grid/Grid'
-export const PopularFilms = () => {
+
+interface IPopularFilmsProps {
+  className?: string
+}
+
+export const PopularFilms = ({ className }: IPopularFilmsProps) => {
   const { data, isSuccess } = useGetPopularQuery(3)
 
   return (
-    <div style={{ marginTop: '90px' }}>
+    <div className={cn(className)}>
       <div className={cn(styles.upper)}>
         <Title variant='h1'>Popular</Title>
-        <ButtonBase />
+        <ButtonBase>See All</ButtonBase>
       </div>
       <div>
         <Grid>

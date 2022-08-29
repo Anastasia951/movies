@@ -1,5 +1,5 @@
 $fontColor: #222;
-$font: 'Open Sans';
+$font: 'Source Sans Pro';
 html,
 body,
 div,
@@ -140,7 +140,8 @@ a:visited {
   padding: 0 15px;
   margin: 0 auto;
 }
-input {
+input,
+button {
   border: none;
   outline: none;
   font: inherit;
