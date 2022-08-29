@@ -3,9 +3,10 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
-  padding: 0.2em 0.4em;
+  padding: 0.3em 0.6em;
   border-radius: 0.3em;
   transition: background 0.2s ease;
+  cursor: pointer;
   &:hover {
     background: rgb(204, 82, 0);
   }

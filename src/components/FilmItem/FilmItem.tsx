@@ -5,6 +5,8 @@ import cn from 'classnames'
 import styles from './FilItem.module.scss'
 import { getYear } from '../../utils/getYear'
 import { FilmRating } from './FilmRating/FilmRating'
+import { Link } from 'react-router-dom'
+import { routes } from '../../routes/routes'
 
 interface IFilmItemProps {
   film: IFilm
