@@ -9,13 +9,11 @@ const container = document.getElementById('root')!
 const root = createRoot(container)
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        {/* <IconContext.Provider value={{ color: '#202020', size: '1rem' }}> */}
-        <App />
-        {/* </IconContext.Provider> */}
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      {/* <IconContext.Provider value={{ color: '#202020', size: '1rem' }}> */}
+      <App />
+      {/* </IconContext.Provider> */}
+    </Provider>
+  </BrowserRouter>
 )

@@ -18,4 +18,8 @@ export const movieApi = createApi({
   }),
 })
 
-export const { useGetPopularQuery, useGetTopRatingQuery } = movieApi
+export const {
+  useGetPopularQuery,
+  useGetTopRatingQuery,
+  useLazyGetPopularQuery,
+} = movieApi

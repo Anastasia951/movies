@@ -1,5 +1,5 @@
-import React from 'react'
-import { useGetPopularQuery } from '../../api/movie.api'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { useGetPopularQuery, useLazyGetPopularQuery } from '../../api/movie.api'
 import { FilmItem } from '../FilmItem/FilmItem'
 
 import { Title } from '../../ui/Title/Title'
@@ -16,7 +16,22 @@ interface IPopularFilmsProps {
 }
 
 export const PopularFilms = ({ className }: IPopularFilmsProps) => {
-  const { data, isSuccess, isLoading } = useGetPopularQuery(1)
+  const [page, setPage] = useState(1)
+  const [fetchPopular, { isLoading, data, isSuccess }] =
+    useLazyGetPopularQuery()
+  // const { data, isSuccess, isLoading } = useGetPopularQuery(page)
+  const [films, setFilms] = useState<IFilm[]>([])
+  const loadMore = () => {
+    setPage(prev => prev + 1)
+  }
+
+  useEffect(() => {
+    fetchPopular(page).then(() => {
+      if (isSuccess) {
+        setFilms(prev => [...prev, ...data!.results])
+      }
+    })
+  }, [page])
 
   return (
     <div className={cn(className)}>
@@ -25,13 +40,14 @@ export const PopularFilms = ({ className }: IPopularFilmsProps) => {
         <ButtonBase>See All</ButtonBase>
       </div>
       <Grid>
-        {isLoading && new Array(16).fill('').map(() => <FilmItemLoading />)}
+        {isLoading &&
+          new Array(16)
+            .fill('')
+            .map((_, index) => <FilmItemLoading key={index} />)}
         {isSuccess &&
-          data.results.map((film: IFilm) => (
-            <FilmItem key={film.id} film={film} />
-          ))}
+          films.map((film: IFilm) => <FilmItem key={film.id} film={film} />)}
       </Grid>
-      <ButtonBase>Show more</ButtonBase>
+      <ButtonBase onClick={loadMore}>Show more</ButtonBase>
     </div>
   )
 }

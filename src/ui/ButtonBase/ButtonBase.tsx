@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import cn from 'classnames'
 import styles from './ButtonBase.module.scss'
-interface IButtonProps {
+interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
+  onClick?: () => void
 }
 
-export const ButtonBase = ({ children }: IButtonProps) => {
-  return <button className={cn(styles.button)}>{children}</button>
+export const ButtonBase = ({ children, onClick }: IButtonProps) => {
+  return (
+    <button onClick={onClick} className={cn(styles.button)}>
+      {children}
+    </button>
+  )
 }
