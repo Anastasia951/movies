@@ -1,5 +1,8 @@
 $fontColor: #222;
 $font: 'Source Sans Pro';
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -103,7 +106,7 @@ section {
   display: block;
 }
 body {
-  line-height: 1;
+  line-height: 1.2;
   font-family: 'Lato', Open Sans, sans-serif;
   color: $fontColor;
   background-color: #fff;
@@ -149,7 +152,9 @@ button {
 input:focus {
   outline: none;
 }
-
+.content {
+  padding-top: 25px;
+}
 .imageWrapper {
   position: relative;
   img {

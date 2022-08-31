@@ -21,17 +21,29 @@ export const PopularFilms = ({ className }: IPopularFilmsProps) => {
     useLazyGetPopularQuery()
   // const { data, isSuccess, isLoading } = useGetPopularQuery(page)
   const [films, setFilms] = useState<IFilm[]>([])
+  // const loadMore = () => {
+  //   setPage(prev => prev + 1)
+  // }
+
+  // useEffect(() => {
+  //   fetchPopular(page).then(() => {
+  //     if (isSuccess) {
+  //       setFilms(prev => [...prev, ...data!.results])
+  //     }
+  //   })
+  // }, [page])
   const loadMore = () => {
     setPage(prev => prev + 1)
-  }
-
-  useEffect(() => {
     fetchPopular(page).then(() => {
       if (isSuccess) {
         setFilms(prev => [...prev, ...data!.results])
       }
     })
-  }, [page])
+  }
+
+  useEffect(() => {
+    loadMore()
+  }, [])
 
   return (
     <div className={cn(className)}>

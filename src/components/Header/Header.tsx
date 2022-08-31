@@ -7,7 +7,6 @@ import styles from './Header.module.scss'
 import { Menu } from './components/Menu/Menu'
 export const Header = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
-
   return (
     <header className={cn(styles.header)}>
       <div className={cn('container', styles.container)}>

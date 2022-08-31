@@ -1,0 +1,25 @@
+.film {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+.filmTable {
+  display: grid;
+  column-gap: 1em;
+  row-gap: 0.5em;
+  grid-template-columns: auto 1fr;
+}
+.field {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+.imageWrapper {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+.title {
+  margin-bottom: 0.2em;
+}

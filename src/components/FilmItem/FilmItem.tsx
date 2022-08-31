@@ -15,18 +15,20 @@ interface IFilmItemProps {
 export const FilmItem = ({ film }: IFilmItemProps) => {
   const { year } = getYear(film.release_date)
   return (
-    <div className={cn(styles.filmItem)}>
-      <div className={cn('imageWrapper', styles.imageWrapper)}>
-        <img
-          src={`${process.env.REACT_APP_IMAGES_URL}${film.poster_path}`}
-          alt={film.title}
-        />
+    <Link to={`/films/${film.id}`}>
+      <div className={cn(styles.filmItem)}>
+        <div className={cn('imageWrapper', styles.imageWrapper)}>
+          <img
+            src={`${process.env.REACT_APP_IMAGES_URL}${film.poster_path}`}
+            alt={film.title}
+          />
+        </div>
+        <Title variant='h3' className={cn(styles.title)}>
+          {film.title}
+        </Title>
+        <p className={cn(styles.year)}>{year}</p>
+        <FilmRating vote_average={film.vote_average} />
       </div>
-      <Title variant='h3' className={cn(styles.title)}>
-        {film.title}
-      </Title>
-      <p className={cn(styles.year)}>{year}</p>
-      <FilmRating vote_average={film.vote_average} />
-    </div>
+    </Link>
   )
 }
