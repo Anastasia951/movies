@@ -6,13 +6,15 @@ import cn from 'classnames'
 import styles from './Film.module.scss'
 import { Title } from '../../ui/Title/Title'
 import { getYear } from '../../utils/getYear'
+import { FilmLoading } from '../../ui/FilmLoading/FilmLoading'
 
 export const Film = () => {
   const params = useParams<Record<'id', string | undefined>>()
-  const { data, isError, isSuccess } = useGetByIdQuery(params.id || '')
+  const { data, isLoading, isSuccess } = useGetByIdQuery(params.id || '')
 
   return (
     <div>
+      {isLoading && <FilmLoading />}
       {isSuccess && (
         <div className={cn(styles.film)}>
           <div className={cn(styles.imageWrapper)}>

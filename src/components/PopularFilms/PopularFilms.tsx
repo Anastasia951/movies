@@ -34,21 +34,25 @@ export const PopularFilms = ({ className }: IPopularFilmsProps) => {
   // }, [page])
   const loadMore = () => {
     setPage(prev => prev + 1)
-    fetchPopular(page).then(() => {
-      if (isSuccess) {
-        setFilms(prev => [...prev, ...data!.results])
-      }
-    })
+    fetchPopular(page) // 1
+    console.log(page)
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(data!.results)
+      setFilms(prev => [...prev, ...data!.results])
+    }
+  }, [page, isSuccess])
 
   useEffect(() => {
     loadMore()
   }, [])
-
+  console.log('render')
   return (
     <div className={cn(className)}>
       <div className={cn(styles.upper)}>
-        <Title variant='h1'>Popular</Title>
+        <Title variant='h1'>Popular {page}</Title>
         <ButtonBase>See All</ButtonBase>
       </div>
       <Grid>
