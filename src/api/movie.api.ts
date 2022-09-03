@@ -19,6 +19,13 @@ export const movieApi = createApi({
       query: (id = '') =>
         `/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
     }),
+    getRecomendations: builder.query<
+      IGetMoviesByField,
+      { id: string; page: number }
+    >({
+      query: ({ id = '', page = 1 }) =>
+        `/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`,
+    }),
   }),
 })
 
@@ -27,4 +34,5 @@ export const {
   useGetTopRatingQuery,
   useLazyGetPopularQuery,
   useGetByIdQuery,
+  useLazyGetRecomendationsQuery,
 } = movieApi

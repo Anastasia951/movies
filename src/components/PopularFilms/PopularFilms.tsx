@@ -52,7 +52,7 @@ export const PopularFilms = ({ className }: IPopularFilmsProps) => {
   return (
     <div className={cn(className)}>
       <div className={cn(styles.upper)}>
-        <Title variant='h1'>Popular {page}</Title>
+        <Title variant='h1'>Popular</Title>
         <ButtonBase>See All</ButtonBase>
       </div>
       <Grid>
